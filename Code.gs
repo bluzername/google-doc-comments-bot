@@ -282,13 +282,13 @@ function setupTrigger() {
   // Remove any existing triggers first
   removeTriggers();
 
-  // Create new time-driven trigger
-  var trigger = ScriptApp.newTrigger('checkAndReplyToComments');
-  var builder = trigger.timeDriven();
-  builder.everyMinutes(CONFIG.CHECK_INTERVAL_MINUTES);
-  builder.create();
+  // Create new time-driven trigger using ClockTriggerBuilder
+  var clockTrigger = ScriptApp.newTrigger('checkAndReplyToComments')
+      .timeDriven()
+      .everyMinutes(1)
+      .create();
 
-  Logger.log('Trigger set up to run every ' + CONFIG.CHECK_INTERVAL_MINUTES + ' minute(s)');
+  Logger.log('Trigger created successfully');
 }
 
 /**
